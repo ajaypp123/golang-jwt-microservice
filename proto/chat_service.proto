@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+// protoc --go_out=. --go-grpc_out=. proto/chat_service.proto
+
+package main;
+
+option go_package = "./pb_generated";
+
+service ChatService {
+    rpc SendMessage (stream MessageRequest) returns (stream MessageResponse) {}
+}
+
+message MessageRequest {
+    string sender = 1;
+    string message = 2;
+}
+
+message MessageResponse {
+    string sender = 1;
+    string message = 2;
+}

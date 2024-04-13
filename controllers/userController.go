@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	services "github.com/ajaypp123/golang-jwt-microservice/service"
+	services "github.com/ajaypp123/golang-jwt-microservice/services"
 
 	"github.com/gin-gonic/gin"
 )
