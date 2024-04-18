@@ -53,6 +53,16 @@ func StartGRPCServer(port string) error {
 	}
 	grpcServer := grpc.NewServer()
 	pb.RegisterChatServiceServer(grpcServer, &services.ChatServiceServer{})
+
+	// Unary Service
+	pb.RegisterUnaryServiceServer(grpcServer, &services.UnaryService{})
+	// Server Streaming RPC
+	pb.RegisterStreamingServiceServer(grpcServer, &services.ServerStreamingService{})
+	// Client Streaming RPC
+	pb.RegisterClientStreamingServiceServer(grpcServer, &services.ClientStreamingService{})
+	// Bidirectional Streaming RPC
+	pb.RegisterBidirectionalServiceServer(grpcServer, &services.BidirectionalStreamingService{})
+
 	if err := grpcServer.Serve(lis); err != nil {
 		return err
 	}

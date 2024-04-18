@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// protoc --go_out=. --go-grpc_out=. proto/server_streaming_service.proto
+
+/*
+* Server Streaming RPC:
+
+- In a server streaming RPC, the client sends a single request to the server and receives a stream of responses.
+- This type of RPC is useful when the server needs to send multiple pieces of data in response to a single client request.
+- Server streaming RPCs are suitable for scenarios such as sending updates or notifications from the server to the client.
+Example: Client requests server for a list of updates, and the server continuously sends updates until the operation is complete.
+*/
+
+package pb_generated;
+
+option go_package = "./pb_generated";
+
+service StreamingService {
+    rpc CountNumbers (CountRequest) returns (stream CountResponse) {}
+}
+
+message CountRequest {
+    int32 start_number = 1;
+}
+
+message CountResponse {
+    int32 number = 1;
+}

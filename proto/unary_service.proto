@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// protoc --go_out=. --go-grpc_out=. proto/unary_service.proto
+
+/*
+* Unary RPC:
+
+- In a unary RPC, the client sends a single request to the server and receives a single response.
+- This type of RPC is similar to traditional HTTP request/response.
+- Unary RPCs are suitable for simple interactions where the client needs to send data to the server and expects a single response.
+Example: Client requests server to perform a calculation and returns the result.
+*/
+
+package pb_generated;
+
+option go_package = "./pb_generated";
+
+service UnaryService {
+    rpc SayHello (HelloRequest) returns (HelloResponse) {}
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string message = 1;
+}

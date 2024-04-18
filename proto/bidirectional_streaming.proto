@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+// protoc --go_out=. --go-grpc_out=. proto/bidirectional_streaming.proto
+
+/*
+* Server Bidirectional RPC:
+
+- In a bidirectional streaming RPC, both the client and server send a stream of messages to each other.
+- This type of RPC is useful for scenarios where both the client and server need to send and receive data concurrently.
+- Bidirectional streaming RPCs are suitable for scenarios such as chat applications or real-time collaboration.
+Example: Client and server establish a chat session, and both can send messages to each other in real-time.
+*/
+
+package pb_generated;
+
+option go_package = "./pb_generated";
+
+service BidirectionalService {
+    rpc Chat (stream Message) returns (stream Message) {}
+}
+
+message Message {
+    string text = 1;
+}
