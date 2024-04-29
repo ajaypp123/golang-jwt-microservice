@@ -3,8 +3,9 @@ package main
 import (
 	"log"
 	"net"
-	"os"
+	"strconv"
 
+	"github.com/ajaypp123/golang-jwt-microservice/helpers"
 	"github.com/ajaypp123/golang-jwt-microservice/helpers/logger"
 	pb "github.com/ajaypp123/golang-jwt-microservice/pb_generated"
 	routers "github.com/ajaypp123/golang-jwt-microservice/routers"
@@ -15,10 +16,7 @@ import (
 
 func main() {
 	// Start gRPC server
-	grpcPort := os.Getenv("GRPC_PORT")
-	if grpcPort == "" {
-		grpcPort = "9090"
-	}
+	grpcPort := strconv.Itoa(helpers.GetConfig().GRPCPort)
 
 	go func() {
 		if err := StartGRPCServer(grpcPort); err != nil {
@@ -27,10 +25,7 @@ func main() {
 	}()
 
 	// Start HTTP server
-	port := os.Getenv("HTTP_PORT")
-	if port == "" {
-		port = "8080"
-	}
+	port := strconv.Itoa(helpers.GetConfig().HTTPPort)
 
 	router := gin.New()
 	router.Use(gin.Logger())

@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
+	"github.com/ajaypp123/golang-jwt-microservice/helpers"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -17,10 +17,7 @@ func DBinstance() *mongo.Client {
 	if err != nil {
 		fmt.Println("Not found .env value loading from env MONGODB_URL")
 	}
-	MongoDb := os.Getenv("MONGODB_URL")
-	if MongoDb == "" {
-		MongoDb = "mongodb://localhost:27017"
-	}
+	MongoDb := "mongodb://" + helpers.GetConfig().Mongo.Server + ":27017"
 	client, err := mongo.NewClient(options.Client().ApplyURI(MongoDb))
 	if err != nil {
 		log.Fatal(err)

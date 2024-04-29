@@ -7,6 +7,7 @@ This application is a template for a microservice covering authentication APIs.
 - gin http package
 - grpc communication
 - mongo database
+- dynamic config
 
 ## TODO
 - streaming kafka

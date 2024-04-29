@@ -1,0 +1,8 @@
+{
+    "http_port": 8080,
+    "grpc_port": 9090,
+    "mongo": {
+        "server": "localhost",
+        "port": 27017
+    }
+}
