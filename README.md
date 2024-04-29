@@ -8,6 +8,7 @@ This application is a template for a microservice covering authentication APIs.
 - grpc communication
 - mongo database
 - dynamic config
+- memory cache redis
 
 ## TODO
 - streaming kafka

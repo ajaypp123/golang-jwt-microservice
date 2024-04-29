@@ -4,5 +4,11 @@
     "mongo": {
         "server": "localhost",
         "port": 27017
+    },
+    "redis": {
+        "server": "localhost",
+        "port": 6379,
+        "password": "",
+        "database": 0
     }
 }
