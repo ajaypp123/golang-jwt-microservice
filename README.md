@@ -16,6 +16,7 @@ This application is a template for a microservice covering authentication APIs.
 - metrics
 - logging improvement
 - swagger
+- monetoring
 
 ## Installation
 
