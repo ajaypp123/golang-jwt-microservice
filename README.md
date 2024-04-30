@@ -12,11 +12,10 @@ This application is a template for a microservice covering authentication APIs.
 
 ## TODO
 - streaming kafka
-- memory cache redis
 - testing
 - code coverage
 - metrics
-- logging improvement
+- loki logging improvement
 - swagger
 - monetoring
 
